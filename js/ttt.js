@@ -295,7 +295,7 @@ function start() {
     document.getElementById("winnerDiv").innerHTML = "";
     setSymbol();
     gameOver = false;
-    var difficulty = document.getElementById("dvPlayerLevel").value;
+    difficulty = document.getElementById("dvPlayerLevel").value;
     played = 0;
     cpuPlay = 1;
     game = [

@@ -132,3 +132,10 @@ option {
     margin-left: 50%;
     transform: translateX(-50%);
 }
+
+.btn-start:hover {
+    background: #F4E9C1;
+    color: #86C2B4;
+    transition: 0.3s;
+}
+
