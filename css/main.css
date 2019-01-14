@@ -84,6 +84,7 @@ body {
 .img-first-move {
     height: 30px;
     margin-left: 3px;
+    margin-right: 3px;
 }
 
 #dvWhoStarts {

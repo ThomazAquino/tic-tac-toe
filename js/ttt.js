@@ -312,12 +312,12 @@ function start() {
     if (whoStart == 1) {
         whoStart = 0; // inverte **
         whoPlays = whoStart;
-        document.getElementById("dvWhoStarts").innerHTML = "The first movement is: " + "<img src='images/" + playerSymbol + ".png' alt='X Symbol' class='img-first-move'>";
+        document.getElementById("dvWhoStarts").innerHTML = "The first movement is: " + "<img src='images/" + playerSymbol + ".png' alt='X Symbol' class='img-first-move'> (You)";
     } else {
         whoStart = 1; // inverte **
         whoPlays = whoStart;
         cpuPlaying();
-        document.getElementById("dvWhoStarts").innerHTML = "The first movement is: CPU";
+        document.getElementById("dvWhoStarts").innerHTML = "The first movement is: " + "<img src='images/" + cpuSymbol + ".png' alt='X Symbol' class='img-first-move'> (Cpu)";
     }
 }
 
