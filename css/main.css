@@ -1,0 +1,133 @@
+body {
+    background: #86C2B4;
+    margin: 0;
+}
+
+#dvmenu {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background: #F4E9C1;
+    padding: 20px 0;
+}
+
+#dvGame {
+    width: 270px;
+    height: 270px;
+    display: flex;
+    flex-wrap: wrap;
+    align-content: flex-start;
+    margin: 45px auto;
+}
+
+.positionGame {
+    width: 85px;
+    height: 85px;
+    margin: 0;
+    padding: 0;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 40px;
+}
+
+.positionGame:nth-child(1) {
+    border-right: 4px solid #F4E9C1;
+    border-bottom: 4px solid #F4E9C1;
+}
+
+.positionGame:nth-child(2) {
+    border-right: 4px solid #F4E9C1;
+    border-bottom: 4px solid #F4E9C1;
+}
+
+.positionGame:nth-child(3) {
+    border-bottom: 4px solid #F4E9C1;
+}
+
+.positionGame:nth-child(4) {
+    border-right: 4px solid #F4E9C1;
+    border-bottom: 4px solid #F4E9C1;
+}
+
+.positionGame:nth-child(5) {
+    border-right: 4px solid #F4E9C1;
+    border-bottom: 4px solid #F4E9C1;
+}
+
+.positionGame:nth-child(6) {
+    border-bottom: 4px solid #F4E9C1;
+}
+
+.positionGame:nth-child(7) {
+    border-right: 4px solid #F4E9C1;
+}
+
+.positionGame:nth-child(8) {
+    border-right: 4px solid #F4E9C1;
+}
+
+#winnerDiv {
+    font-size: 40px;
+    color: #F4E9C1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 30px;
+}
+
+#winnerDiv img {
+    margin-left: 10px;
+}
+
+.img-first-move {
+    height: 30px;
+    margin-left: 3px;
+}
+
+#dvWhoStarts {
+    display: flex;
+    align-items: center;
+    margin-top: 12px;
+    color: #fff;
+    font-size: 24px;
+}
+
+.select {
+    background: transparent;
+    border: 1px solid #86C2B4;;
+    border-radius: 10px;
+    width: 45px;
+    height: 40px;
+    font-size: 25px;
+    color: #717171;
+    margin-bottom: 10px;
+}
+
+.select-lvl {
+    font-size: 18px;
+    width: 80px;
+}
+
+option {
+    color: #717171;
+}
+
+.choose {
+    font-size: 25px;
+    color: #86C2B4;;
+}
+
+.btn-start {
+    background: transparent;
+    border: 2px solid #F4E9C1;
+    border-radius: 50px;
+    font-size: 20px;
+    padding: 7px 30px;
+    margin-top: 15px;
+    color: #fff;
+    cursor: pointer;
+    margin-left: 50%;
+    transform: translateX(-50%);
+}
