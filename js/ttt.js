@@ -2,6 +2,7 @@ var game = []; // save the positions of plays X or O
 var board = []; // control of visual elements
 var whoPlays = 0; // 0 = Player and 1 = Cpu
 var check; // store the result of function checkVictory()
+var draw;
 var gameOver = false;
 var difficulty = 1;
 var whoStart = 1;
@@ -22,7 +23,10 @@ function cpuPlaying() {
     if(!gameOver) {
         var line;
         var column;
-        if(difficulty == 1) {
+        if (difficulty == 1) {
+            
+            
+
             do { // first sortition a random position
                 line = Math.round(Math.random()*2);
                 column = Math.round(Math.random()*2);
@@ -182,15 +186,32 @@ function cpuPlaying() {
             //end level 2
         }
         check = checkVictory();
+        draw = checkDraw();
         if (check != "") {
             document.getElementById("winnerDiv").innerHTML = "The winner is <img src='images/" + check + ".png' alt='X Symbol'>";
             updateScore(check);
+            gameOver = true;
+        }  if (draw == "draw") {
+            alert("DRAW");
+            document.getElementById("winnerDiv").innerHTML = "Draw!";
             gameOver = true;
         }
         refreshBoard();
         played++;
         whoPlays = 0; // set the next play to PLayer
     }
+}
+
+function checkDraw() {
+
+    if (
+        (game[0][0] != "") && (game[0][1] != "") && (game[0][2] != "") &&
+        (game[1][0] != "") && (game[1][1] != "") && (game[1][2] != "") &&
+        (game[2][0] != "") && (game[2][1] != "") && (game[2][2] != "")
+    ) {
+            return "draw";
+        }
+    
 }
 
 function updateScore(winner) {
@@ -297,10 +318,13 @@ function play(p) { // the parameter is the position of the element
             //alert('asas');
             
             check = checkVictory();
+            draw = checkDraw();
             if (check != "") {
                 document.getElementById("winnerDiv").innerHTML = "The winner is <img src='images/" + check + ".png' alt='X Symbol'>";
                 updateScore(check);
                 gameOver = true;
+            } else if (draw == "draw") {
+                alert("DRAW");
             }
             played++;
             cpuPlaying();
