@@ -3,7 +3,7 @@ var board = []; // control of visual elements
 var whoPlays = 0; // 0 = Player and 1 = Cpu
 var check; // store the result of function checkVictory()
 var gameOver = false;
-var difficulty = 2;
+var difficulty = 1;
 var whoStart = 1;
 var playerSymbol;
 var cpuSymbol;
@@ -28,6 +28,8 @@ function cpuPlaying() {
                 column = Math.round(Math.random()*2);
             } while (game[line][column] != ""); // then verify if the position is empty
             game[line][column] = cpuSymbol; //this will be dinamic **
+            console.log("Jogada CPU:");
+            console.log(game);
 
         } else if (difficulty == 2) {
             // level 2
@@ -182,6 +184,7 @@ function cpuPlaying() {
         check = checkVictory();
         if (check != "") {
             document.getElementById("winnerDiv").innerHTML = "The winner is <img src='images/" + check + ".png' alt='X Symbol'>";
+            updateScore(check);
             gameOver = true;
         }
         refreshBoard();
@@ -190,30 +193,39 @@ function cpuPlaying() {
     }
 }
 
+function updateScore(winner) {
+    var Element = ".scoretext" + winner;
+    //document.querySelector(Element).innerHTML = "OK";
+    var soma = document.querySelector(Element).value;
+    soma++;
+    document.querySelector(Element).value = soma;
+    //alert(soma);
+}
+
 function checkVictory() {
     var line;
     var column;
     //check all 3 lines
     for (line = 0; line < 3; line++) { 
-        if ( (game[line][0] == game[line][1])&&(game[line][1]==game[line][2]) ){
+        if ( (game[line][0] == game[line][1]) && (game[line][1] == game[line][2]) && (game[line][0] != "") ) {
             return game[line][0]; // Return de winner
         }
     }
-
+    console.log("chegou na line " + line + "-->" + Math.round(Math.random()*100) );
     //check all 3 columns
     for (column = 0; column < 3; column++) { 
-        if ( (game[0][column] == game[1][column])&&(game[1][column]==game[2][column]) ){
+        if ( (game[0][column] == game[1][column]) && (game[1][column]==game[2][column]) && (game[0][column]!= "") ){
             return game[0][column]; // Return de winner
         }
     }
-
+    console.log("chegou na coluna " + column + "-->" + Math.round(Math.random()*100) );
     //check Diagonal 1 --> \
-    if ( (game[0][0] == game[1][1])&&(game[1][1]==game[2][2]) ){
+    if ( (game[0][0] == game[1][1]) && (game[1][1]==game[2][2]) && (game[0][0]!="") ){
         return game[0][0]; // Return de winner
     }
 
     //check Diagonal 2 --> /
-    if ( (game[0][2] == game[1][1])&&(game[1][1]==game[2][0]) ){
+    if ( (game[0][2] == game[1][1]) && (game[1][1]==game[2][0]) && (game[1][1]!="") ){
         return game[0][2]; // Return de winner
     }
     return "";
@@ -280,9 +292,14 @@ function play(p) { // the parameter is the position of the element
         }
         if (whoPlays == 1) { // for have sure if the position is valid. 
             refreshBoard();
+            console.log("Minha jogada:");
+            console.log(game);
+            //alert('asas');
+            
             check = checkVictory();
             if (check != "") {
                 document.getElementById("winnerDiv").innerHTML = "The winner is <img src='images/" + check + ".png' alt='X Symbol'>";
+                updateScore(check);
                 gameOver = true;
             }
             played++;
@@ -295,7 +312,7 @@ function start() {
     document.getElementById("winnerDiv").innerHTML = "";
     setSymbol();
     gameOver = false;
-    difficulty = document.getElementById("dvPlayerLevel").value;
+    //difficulty = document.getElementById("dvPlayerLevel").value;
     played = 0;
     cpuPlay = 1;
     game = [
@@ -319,6 +336,8 @@ function start() {
         cpuPlaying();
         document.getElementById("dvWhoStarts").innerHTML = "The first movement is: " + "<img src='images/" + cpuSymbol + ".png' alt='X Symbol' class='img-first-move'> (Cpu)";
     }
+    console.log("====  Ja resetou o jogo, proximo é vazio");
+    console.log(game);
 }
 
 function refreshBoard() {

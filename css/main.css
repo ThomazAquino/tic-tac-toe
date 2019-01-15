@@ -9,6 +9,7 @@ body {
     align-items: center;
     background: #F4E9C1;
     padding: 20px 0;
+    border-bottom: 1px solid #868686;
 }
 
 #dvGame {
@@ -137,5 +138,65 @@ option {
     background: #F4E9C1;
     color: #86C2B4;
     transition: 0.3s;
+}
+
+/* Score */
+
+.scoretextX {
+    color: #094A5B;
+    font-size: 30px;
+    margin: 0;
+    padding: 0 15px;
+    height: 35px;
+    width: 175px;
+    border-radius: 50px;
+    background-color: #fff;
+    border: none;
+    width: 150px;
+}
+
+.scoretextO {
+    color: #681B0E;
+    font-size: 30px;
+    margin: 0;
+    text-align: end;
+    padding-right: 6px;
+    padding-left: 24px;
+    height: 35px;
+    width: 175px;
+    border-radius: 50px;
+    background-color: #fff;
+    border: none;
+    width: 150px;
+}
+
+.img-score {
+    height: 50px;
+    margin: 0 10px;
+}
+
+.score {
+    display: flex;
+    align-items: center;
+}
+
+.Allscore {
+    display: flex;
+    justify-content: space-between;
+    max-width: 560px;
+    margin: 0 auto;
+    padding-right: 10px;
+    flex-wrap: wrap;
+    margin-top: 25px;
+}
+
+@media (max-width: 487px) {
+    .Allscore {
+        justify-content: center;
+    }
+
+    .score:nth-child(1) {
+        margin-bottom: 10px;
+    }
 }
 
