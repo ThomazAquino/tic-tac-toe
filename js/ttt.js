@@ -191,10 +191,11 @@ function cpuPlaying() {
             document.getElementById("winnerDiv").innerHTML = "The winner is <img src='images/" + check + ".png' alt='X Symbol'>";
             updateScore(check);
             gameOver = true;
-        }  if (draw == "draw") {
-            alert("DRAW");
+            setTimeout(start, 3000);
+        }  else if (draw == "draw") {
             document.getElementById("winnerDiv").innerHTML = "Draw!";
             gameOver = true;
+            setTimeout(start, 3000);
         }
         refreshBoard();
         played++;
@@ -220,7 +221,6 @@ function updateScore(winner) {
     var soma = document.querySelector(Element).value;
     soma++;
     document.querySelector(Element).value = soma;
-    //alert(soma);
 }
 
 function checkVictory() {
@@ -315,7 +315,6 @@ function play(p) { // the parameter is the position of the element
             refreshBoard();
             console.log("Minha jogada:");
             console.log(game);
-            //alert('asas');
             
             check = checkVictory();
             draw = checkDraw();
@@ -323,8 +322,11 @@ function play(p) { // the parameter is the position of the element
                 document.getElementById("winnerDiv").innerHTML = "The winner is <img src='images/" + check + ".png' alt='X Symbol'>";
                 updateScore(check);
                 gameOver = true;
+                setTimeout(start, 3000);
             } else if (draw == "draw") {
-                alert("DRAW");
+                document.getElementById("winnerDiv").innerHTML = "Draw!";
+                gameOver = true;
+                setTimeout(start, 3000);
             }
             played++;
             cpuPlaying();
