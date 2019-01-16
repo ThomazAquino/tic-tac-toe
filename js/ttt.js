@@ -24,8 +24,6 @@ function cpuPlaying() {
         var line;
         var column;
         if (difficulty == 1) {
-            
-            
 
             do { // first sortition a random position
                 line = Math.round(Math.random()*2);
@@ -35,156 +33,7 @@ function cpuPlaying() {
             console.log("Jogada CPU:");
             console.log(game);
 
-        } else if (difficulty == 2) {
-            // level 2
-            // Atack
-            // Possible plays on line 1
-            if ( (game[0][0] == cpuSymbol)&&(game[0][1] == cpuSymbol)&&(game[0][2] == "") ) {
-                game[0][2] = cpuSymbol; 
-            } else if ( (game[0][0] == cpuSymbol)&&(game[0][2] == cpuSymbol)&&(game[0][1] == "") ) {
-                game[0][1] = cpuSymbol;
-            } else if ( (game[0][1] == cpuSymbol)&&(game[0][2] == cpuSymbol)&&(game[0][0] == "") ) {
-                game[0][0] = cpuSymbol;
-            } else
-            // Possible plays on line 2
-            if ( (game[1][0] == cpuSymbol)&&(game[1][1] == cpuSymbol)&&(game[1][2] == "") ) {
-                game[1][2] = cpuSymbol; 
-            } else if ( (game[1][0] == cpuSymbol)&&(game[1][2] == cpuSymbol)&&(game[1][1] == "") ) {
-                game[1][1] = cpuSymbol;
-            } else if ( (game[1][1] == cpuSymbol)&&(game[1][2] == cpuSymbol)&&(game[1][0] == "") ) {
-                game[1][0] = cpuSymbol;
-            } else
-            // Possible plays on line 3
-            if ( (game[2][0] == cpuSymbol)&&(game[2][1] == cpuSymbol)&&(game[2][2] == "") ) {
-                game[2][2] = cpuSymbol; 
-            } else if ( (game[2][0] == cpuSymbol)&&(game[2][2] == cpuSymbol)&&(game[2][1] == "") ) {
-                game[1][1] = cpuSymbol;
-            } else if ( (game[2][1] == cpuSymbol)&&(game[2][2] == cpuSymbol)&&(game[2][0] == "") ) {
-                game[2][0] = cpuSymbol;
-            } else
-            // Possible plays on column 1
-            if ( (game[0][0] == cpuSymbol)&&(game[1][0] == cpuSymbol)&&(game[2][0] == "") ) {
-                game[2][0] = cpuSymbol; 
-            } else if ( (game[0][0] == cpuSymbol)&&(game[2][0] == cpuSymbol)&&(game[1][0] == "") ) {
-                game[1][0] = cpuSymbol;
-            } else if ( (game[1][0] == cpuSymbol)&&(game[2][0] == cpuSymbol)&&(game[0][0] == "") ) {
-                game[0][0] = cpuSymbol;
-            } else
-            // Possible plays on column 2
-            if ( (game[0][1] == cpuSymbol)&&(game[1][1] == cpuSymbol)&&(game[2][1] == "") ) {
-                game[2][1] = cpuSymbol; 
-            } else if ( (game[0][1] == cpuSymbol)&&(game[2][1] == cpuSymbol)&&(game[1][1] == "") ) {
-                game[1][1] = cpuSymbol;
-            } else if ( (game[1][1] == cpuSymbol)&&(game[2][1] == cpuSymbol)&&(game[0][1] == "") ) {
-                game[0][1] = cpuSymbol;
-            } else
-            // Possible plays on column 3
-            if ( (game[0][2] == cpuSymbol)&&(game[1][2] == cpuSymbol)&&(game[2][2] == "") ) {
-                game[2][2] = cpuSymbol; 
-            } else if ( (game[0][2] == cpuSymbol)&&(game[2][2] == cpuSymbol)&&(game[1][2] == "") ) {
-                game[1][2] = cpuSymbol;
-            } else if ( (game[1][2] == cpuSymbol)&&(game[2][2] == cpuSymbol)&&(game[0][2] == "") ) {
-                game[0][2] = cpuSymbol;
-            } else
-            // Possible play on diagonal 1 --> \
-            if ( (game[0][0] == cpuSymbol)&&(game[1][1] == cpuSymbol)&&(game[2][2] == "") ) {
-                game[2][2] = cpuSymbol; 
-            } else if ( (game[0][0] == cpuSymbol)&&(game[2][2] == cpuSymbol)&&(game[1][1] == "") ) {
-                game[1][1] = cpuSymbol;
-            } else if ( (game[1][1] == cpuSymbol)&&(game[2][2] == cpuSymbol)&&(game[0][0] == "") ) {
-                game[0][0] = cpuSymbol;
-            } else
-            // Possible play on diagonal 2 --> /
-            if ( (game[0][2] == cpuSymbol)&&(game[1][1] == cpuSymbol)&&(game[2][0] == "") ) {
-                game[2][0] = cpuSymbol; 
-            } else if ( (game[0][2] == cpuSymbol)&&(game[2][0] == cpuSymbol)&&(game[1][1] == "") ) {
-                game[1][1] = cpuSymbol;
-            } else if ( (game[2][0] == cpuSymbol)&&(game[1][1] == cpuSymbol)&&(game[0][2] == "") ) {
-                game[0][2] = cpuSymbol;
-            } else
-            // Defend
-            // Possible plays on line 1
-            if ( (game[0][0] == playerSymbol)&&(game[0][1] == playerSymbol)&&(game[0][2] == "") ) {
-                game[0][2] = cpuSymbol; 
-            } else if ( (game[0][0] == playerSymbol)&&(game[0][2] == playerSymbol)&&(game[0][1] == "") ) {
-                game[0][1] = cpuSymbol;
-            } else if ( (game[0][1] == playerSymbol)&&(game[0][2] == playerSymbol)&&(game[0][0] == "") ) {
-                game[0][0] = cpuSymbol;
-            } else
-            // Possible plays on line 2
-            if ( (game[1][0] == playerSymbol)&&(game[1][1] == playerSymbol)&&(game[1][2] == "") ) {
-                game[1][2] = cpuSymbol; 
-            } else if ( (game[1][0] == playerSymbol)&&(game[1][2] == playerSymbol)&&(game[1][1] == "") ) {
-                game[1][1] = cpuSymbol;
-            } else if ( (game[1][1] == playerSymbol)&&(game[1][2] == playerSymbol)&&(game[1][0] == "") ) {
-                game[1][0] = cpuSymbol;
-            } else
-            // Possible plays on line 3
-            if ( (game[2][0] == playerSymbol)&&(game[2][1] == playerSymbol)&&(game[2][2] == "") ) {
-                game[2][2] = cpuSymbol; 
-            } else if ( (game[2][0] == playerSymbol)&&(game[2][2] == playerSymbol)&&(game[2][1] == "") ) {
-                game[1][1] = cpuSymbol;
-            } else if ( (game[2][1] == playerSymbol)&&(game[2][2] == playerSymbol)&&(game[2][0] == "") ) {
-                game[2][0] = cpuSymbol;
-            } else
-            // Possible plays on column 1
-            if ( (game[0][0] == playerSymbol)&&(game[1][0] == playerSymbol)&&(game[2][0] == "") ) {
-                game[2][0] = cpuSymbol; 
-            } else if ( (game[0][0] == playerSymbol)&&(game[2][0] == playerSymbol)&&(game[1][0] == "") ) {
-                game[1][0] = cpuSymbol;
-            } else if ( (game[1][0] == playerSymbol)&&(game[2][0] == playerSymbol)&&(game[0][0] == "") ) {
-                game[0][0] = cpuSymbol;
-            } else
-            // Possible plays on column 2
-            if ( (game[0][1] == playerSymbol)&&(game[1][1] == playerSymbol)&&(game[2][1] == "") ) {
-                game[2][1] = cpuSymbol; 
-            } else if ( (game[0][1] == playerSymbol)&&(game[2][1] == playerSymbol)&&(game[1][1] == "") ) {
-                game[1][1] = cpuSymbol;
-            } else if ( (game[1][1] == playerSymbol)&&(game[2][1] == playerSymbol)&&(game[0][1] == "") ) {
-                game[0][1] = cpuSymbol;
-            } else
-            // Possible plays on column 3
-            if ( (game[0][2] == playerSymbol)&&(game[1][2] == playerSymbol)&&(game[2][2] == "") ) {
-                game[2][2] = cpuSymbol; 
-            } else if ( (game[0][2] == playerSymbol)&&(game[2][2] == playerSymbol)&&(game[1][2] == "") ) {
-                game[1][2] = cpuSymbol;
-            } else if ( (game[1][2] == playerSymbol)&&(game[2][2] == playerSymbol)&&(game[0][2] == "") ) {
-                game[0][2] = cpuSymbol;
-            } else
-            // Possible play on diagonal 1 --> \
-            if ( (game[0][0] == playerSymbol)&&(game[1][1] == playerSymbol)&&(game[2][2] == "") ) {
-                game[2][2] = cpuSymbol; 
-            } else if ( (game[0][0] == playerSymbol)&&(game[2][2] == playerSymbol)&&(game[1][1] == "") ) {
-                game[1][1] = cpuSymbol;
-            } else if ( (game[1][1] == playerSymbol)&&(game[2][2] == playerSymbol)&&(game[0][0] == "") ) {
-                game[0][0] = cpuSymbol;
-            } else
-            // Possible play on diagonal 2 --> /
-            if ( (game[0][2] == playerSymbol)&&(game[1][1] == playerSymbol)&&(game[2][0] == "") ) {
-                game[2][0] = cpuSymbol; 
-            } else if ( (game[0][2] == playerSymbol)&&(game[2][0] == playerSymbol)&&(game[1][1] == "") ) {
-                game[1][1] = cpuSymbol;
-            } else if ( (game[2][0] == playerSymbol)&&(game[1][1] == playerSymbol)&&(game[0][2] == "") ) {
-                game[0][2] = cpuSymbol;
-            } else {
-                if (played < 8 ) {
-                    do { // first sortition a random position
-                        line = Math.round(Math.random()*2);
-                        column = Math.round(Math.random()*2);
-                    } while (game[line][column] != ""); // then verify if the position is empty
-                    game[line][column] = cpuSymbol; //this will be dinamic **
-                } else {
-                    for(var line = 0; line < 3; line++) { 
-                        for(var column = 0; column < 3; column++ ) {
-                            if(game[line][column] == "") {
-                                game[line][column] == cpuSymbol;
-                            }
-                        }
-                    }
-                }
-            }
-            //end level 2
-        }
+        } 
         check = checkVictory();
         draw = checkDraw();
         if (check != "") {
@@ -200,6 +49,7 @@ function cpuPlaying() {
         refreshBoard();
         played++;
         whoPlays = 0; // set the next play to PLayer
+        play();
     }
 }
 
@@ -252,66 +102,20 @@ function checkVictory() {
     return "";
 }
 
-
 function play(p) { // the parameter is the position of the element
     if ((!gameOver)&&(whoPlays == 0)) { //if gameOver still false and whoPlays is the player
-        switch(p) {
-            case 1:
-                if(game[0][0] == ""){ // Verify if the position is valid
-                    game[0][0] = playerSymbol; //this will be dinamic **
-                    whoPlays = 1; // set the next play to Cpu
-                }
-                break;
-            case 2:
-                if(game[0][1] == ""){
-                    game[0][1] = playerSymbol;
-                    whoPlays = 1; 
-                }
-                break;
-            case 3:
-                if(game[0][2] == ""){
-                    game[0][2] = playerSymbol;
-                    whoPlays = 1;
-                }
-                break;
-            case 4:
-                if(game[1][0] == ""){
-                    game[1][0] = playerSymbol;
-                    whoPlays = 1;
-                }
-                break;
-            case 5:
-                if(game[1][1] == ""){
-                    game[1][1] = playerSymbol;
-                    whoPlays = 1;
-                }
-                break;
-            case 6:
-                if(game[1][2] == ""){
-                    game[1][2] = playerSymbol;
-                    whoPlays = 1;
-                }
-                break;
-            case 7:
-                if(game[2][0] == ""){
-                    game[2][0] = playerSymbol;
-                    whoPlays = 1;
-                }
-            break;
-            case 8:
-                if(game[2][1] == ""){
-                    game[2][1] = playerSymbol;
-                    whoPlays = 1;
-                }
-            break;
-            case 9:
-                if(game[2][2] == ""){
-                    game[2][2] = playerSymbol;
-                    whoPlays = 1;
-                }
-            break;
-        }
-        if (whoPlays == 1) { // for have sure if the position is valid. 
+        //switch
+            do { // first sortition a random position
+                line = Math.round(Math.random()*2);
+                column = Math.round(Math.random()*2);
+            } while (game[line][column] != ""); // then verify if the position is empty
+            game[line][column] = playerSymbol; 
+            console.log("Jogada Player:");
+            console.log(game);
+        // se swuitch for jogavel passa whoplays para 1
+
+
+        
             refreshBoard();
             console.log("Minha jogada:");
             console.log(game);
@@ -328,9 +132,10 @@ function play(p) { // the parameter is the position of the element
                 gameOver = true;
                 setTimeout(start, 3000);
             }
+            whoPlays == 1;
             played++;
             cpuPlaying();
-        }
+        
     }
 }
 
@@ -340,7 +145,6 @@ function start() {
     gameOver = false;
     //difficulty = document.getElementById("dvPlayerLevel").value;
     played = 0;
-    cpuPlay = 1;
     game = [
             ["","",""],
             ["","",""],
@@ -355,6 +159,7 @@ function start() {
     if (whoStart == 1) {
         whoStart = 0; // inverte **
         whoPlays = whoStart;
+        play();
         document.getElementById("dvWhoStarts").innerHTML = "The first movement is: " + "<img src='images/" + playerSymbol + ".png' alt='X Symbol' class='img-first-move'> (You)";
     } else {
         whoStart = 1; // inverte **
@@ -372,6 +177,7 @@ function refreshBoard() {
             if (game[line][column] == playerSymbol) {
                 board[line][column].innerHTML = "<img src='images/" + playerSymbol + ".png' alt='X Symbol'>";
                 board[line][column].style.cursor = "default";
+
             } else if (game[line][column] == cpuSymbol) {
                 board[line][column].innerHTML = "<img src='images/" + cpuSymbol + ".png' alt='X Symbol'>";
                 board[line][column].style.cursor = "default";
