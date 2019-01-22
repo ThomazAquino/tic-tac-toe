@@ -9,6 +9,46 @@ var whoStart = 1;
 var playerSymbol;
 var cpuSymbol;
 var played = 0; // count the number of plays
+let cordinateX = '';
+let cordinateY = '';
+
+
+
+async function getCordenates () {
+    return new P (async (resolve, reject) => {
+        try {
+            resolve(await axios.get("https://nexmo.damagecloud.de/JsonServer/api/coordinates"))
+        } catch (err) {
+            // console.log(err)
+            reject(err)
+        }
+    })   
+}
+
+async function consulataCord() {
+    return new P (async (resolve, reject) => { 
+
+        let { data } = await getCordenates()
+        let {x, y} = data
+
+        x = parseInt(x) - 1
+        y = parseInt(y) - 1
+
+        console.log(x + " " +  y + " Para --->", whoPlays);
+
+        if (checkArray({x,y})) {
+            setTimeout(() => cpuPlaying(), 2000) 
+            console.log("checkArray true");
+        } else {
+            resolve({x,y})
+            console.log("checkArray false posicao disponivel");
+        }
+    })
+}
+
+function checkArray (data) {
+    return game[data.x][data.y].length > 0
+}
 
 function setSymbol() {
     playerSymbol = document.getElementById("dvPlayerSymbol").value;
@@ -19,23 +59,16 @@ function setSymbol() {
     }
 }
 
-function cpuPlaying() {
+async function cpuPlaying() {
     if(!gameOver) {
-        var line;
-        var column;
-        if (difficulty == 1) {
+        
+       let data = await consulataCord()
+        game[data.x][data.y] = cpuSymbol;
 
-            do { // first sortition a random position
-                line = Math.round(Math.random()*2);
-                column = Math.round(Math.random()*2);
-            } while (game[line][column] != ""); // then verify if the position is empty
-            game[line][column] = cpuSymbol; //this will be dinamic **
-            console.log("Jogada CPU:");
-            console.log(game);
-
-        } 
+        refreshBoard();
         check = checkVictory();
         draw = checkDraw();
+
         if (check != "") {
             document.getElementById("winnerDiv").innerHTML = "The winner is <img src='images/" + check + ".png' alt='X Symbol'>";
             updateScore(check);
@@ -46,7 +79,7 @@ function cpuPlaying() {
             gameOver = true;
             setTimeout(start, 3000);
         }
-        refreshBoard();
+        
         played++;
         whoPlays = 0; // set the next play to PLayer
         play();
@@ -67,7 +100,6 @@ function checkDraw() {
 
 function updateScore(winner) {
     var Element = ".scoretext" + winner;
-    //document.querySelector(Element).innerHTML = "OK";
     var soma = document.querySelector(Element).value;
     soma++;
     document.querySelector(Element).value = soma;
@@ -82,14 +114,14 @@ function checkVictory() {
             return game[line][0]; // Return de winner
         }
     }
-    console.log("chegou na line " + line + "-->" + Math.round(Math.random()*100) );
+    // console.log("chegou na line " + line + "-->" + Math.round(Math.random()*100) );
     //check all 3 columns
     for (column = 0; column < 3; column++) { 
         if ( (game[0][column] == game[1][column]) && (game[1][column]==game[2][column]) && (game[0][column]!= "") ){
             return game[0][column]; // Return de winner
         }
     }
-    console.log("chegou na coluna " + column + "-->" + Math.round(Math.random()*100) );
+    // console.log("chegou na coluna " + column + "-->" + Math.round(Math.random()*100) );
     //check Diagonal 1 --> \
     if ( (game[0][0] == game[1][1]) && (game[1][1]==game[2][2]) && (game[0][0]!="") ){
         return game[0][0]; // Return de winner
@@ -102,23 +134,18 @@ function checkVictory() {
     return "";
 }
 
-function play(p) { // the parameter is the position of the element
+async function play(p) { // the parameter is the position of the element
     if ((!gameOver)&&(whoPlays == 0)) { //if gameOver still false and whoPlays is the player
         //switch
-            do { // first sortition a random position
-                line = Math.round(Math.random()*2);
-                column = Math.round(Math.random()*2);
-            } while (game[line][column] != ""); // then verify if the position is empty
-            game[line][column] = playerSymbol; 
-            console.log("Jogada Player:");
-            console.log(game);
-        // se swuitch for jogavel passa whoplays para 1
-
-
-        
+            // do { // first sortition a random position
+            //     line = Math.round(Math.random()*2);
+            //     column = Math.round(Math.random()*2);
+            // } while (game[line][column] != ""); // then verify if the position is empty
+            
+            let data = await consulataCord()
+            game[data.x][data.y] = "X";
+            console.log(game); 
             refreshBoard();
-            console.log("Minha jogada:");
-            console.log(game);
             
             check = checkVictory();
             draw = checkDraw();
@@ -167,8 +194,6 @@ function start() {
         cpuPlaying();
         document.getElementById("dvWhoStarts").innerHTML = "The first movement is: " + "<img src='images/" + cpuSymbol + ".png' alt='X Symbol' class='img-first-move'> (Cpu)";
     }
-    console.log("====  Ja resetou o jogo, proximo é vazio");
-    console.log(game);
 }
 
 function refreshBoard() {
