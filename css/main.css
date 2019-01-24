@@ -88,12 +88,14 @@ body {
     margin-right: 3px;
 }
 
-#dvWhoStarts {
+#dvWhoStarts,
+#dvWhoIsPlaying {
     display: flex;
     align-items: center;
     margin-top: 12px;
     color: #fff;
     font-size: 24px;
+    justify-content: center;
 }
 
 .select {
