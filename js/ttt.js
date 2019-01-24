@@ -31,20 +31,20 @@ async function consulataCord() {
         x = parseInt(x) - 1; // The cordinates are 1 to 3 and my array works in 0 to 1
         y = parseInt(y) - 1;
 
-        if (checkArray({ x, y })) {
+        if (checkArray({ x, y })) { // check if the position of cordinates is possible plays (empty)
+            resolve({ x, y });
+        } else { // if the play is not possible recall the function in 2 seconds
             if (whoPlays == 0) {
                 setTimeout(() => play(), 2000); 
             } else {
                 setTimeout(() => cpuPlaying(), 2000);
             }
-        } else {
-            resolve({ x, y });
         }
     })
 }
 
-function checkArray(data) {
-    return game[data.x][data.y].length != "";
+function checkArray(data) { // recive the cordinates 
+    return game[data.x][data.y].length == ""; // verify if the cordinates is possible plays
 }
 
 async function play(p) { // the parameter is the position of the element
@@ -149,11 +149,11 @@ function checkDraw() {
     
 }
 
-function updateScore(winner) {
-    var Element = ".scoretext" + winner;
+function updateScore(winner) { // recive the winner: X or Y
+    var Element = ".scoretext" + winner; // select the respective winner score input in HTML
     var soma = document.querySelector(Element).value;
-    soma++;
-    document.querySelector(Element).value = soma;
+    soma++; // increment the value present in input
+    document.querySelector(Element).value = soma; // aply the new value in score
 }
 
 function checkVictory() {
